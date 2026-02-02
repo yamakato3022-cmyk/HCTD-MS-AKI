@@ -1,0 +1,185 @@
+body {
+  margin: 0;
+ font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  background: #F1E2E2;
+  color: rgb(71,60,139);
+  text-align: center;
+}
+
+/* Title */
+.page-title {
+  margin-top: 50px;
+  font-size: 42px;
+}
+
+/* Cards container */
+.cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-top: 70px;
+  flex-wrap: wrap;
+}
+
+/* Card */
+.card {
+  width: 320px;
+  height: 220px;
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+  perspective: 1000px;
+  box-shadow: 0 15px 30px rgba(255,255,255,0.15);
+  transition: 0.5s;
+}
+
+.card:hover {
+  transform: scale(1.08);
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Dark overlay for better look */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  z-index: 1;
+}
+
+/* Flip content */
+.card__content {
+  position: absolute;
+  inset: 0;
+  padding: 25px;
+  background: white;
+  color: black;
+  transform: rotateX(-90deg);
+  transform-origin: bottom;
+  transition: 0.5s;
+  z-index: 2;
+  border-radius: 18px;
+}
+
+.card__content2 {
+  position: absolute;
+  inset: 0;
+  padding: 25px;
+  background: #BB8ED0;
+  color: black;
+  transform: rotateX(-90deg);
+  transform-origin: bottom;
+  transition: 0.5s;
+  z-index: 2;
+  border-radius: 18px;
+}
+
+
+.card:hover .card__content2 {
+  transform: rotateX(0);
+}
+
+
+.card:hover .card__content {
+  transform: rotateX(0);
+}
+
+/* Hide image on hover */
+.card:hover img {
+  transform: scale(0);
+}
+
+.card__title2 {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.card__description2 {
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.card__title {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.card__description {
+  font-size: 14px;
+  color: #555;
+}
+.img-box {
+  position: fixed;
+  width: 200px;
+  height: 150px;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+.img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Positions */
+.top-left {
+  top: 20px;
+  left: 20px;
+}
+
+.top-right {
+  top: 20px;
+  right: 20px;
+}
+
+.bottom-left {
+  bottom: 20px;
+  left: 20px;
+}
+
+.bottom-right {
+  bottom: 20px;
+  right: 20px;
+}
+
+/* Make link card behave like card */
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* Flip on hover OR focus (click) */
+.card-link:hover .card__content,
+.card-link:focus .card__content {
+  transform: rotateX(0);
+}
+
+/* Keep hidden normally */
+.card-link .card__content {
+  transform: rotateX(-90deg);
+}
+
+/* Hide image when active */
+.card-link:hover img,
+.card-link:focus img {
+  transform: scale(0);
+}
+@media (max-width: 768px) {
+  .cards-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .card {
+    width: 90%;
+    max-width: 90%;
+  }
+}
